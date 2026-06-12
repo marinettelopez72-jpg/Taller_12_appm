@@ -4,10 +4,7 @@ import '../models/producto.dart';
 class ProductoDetalleScreen extends StatefulWidget {
   final Producto producto;
 
-  const ProductoDetalleScreen({
-    super.key,
-    required this.producto,
-  });
+  const ProductoDetalleScreen({super.key, required this.producto});
 
   @override
   State<ProductoDetalleScreen> createState() => _ProductoDetalleScreenState();
@@ -35,15 +32,17 @@ class _ProductoDetalleScreenState extends State<ProductoDetalleScreen> {
                   // Categoría
                   Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 4),
+                      horizontal: 10,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
-                      color: Colors.blue[50],
+                      color: const Color(0xFFF3E8FF),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(
                       widget.producto.categoria,
                       style: TextStyle(
-                        color: Colors.blue[700],
+                        color: const Color(0xFF7C3AED),
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                       ),
@@ -75,10 +74,7 @@ class _ProductoDetalleScreenState extends State<ProductoDetalleScreen> {
                   // Descripción
                   const Text(
                     'Descripción',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 6),
                   Text(
@@ -97,8 +93,7 @@ class _ProductoDetalleScreenState extends State<ProductoDetalleScreen> {
                     child: ElevatedButton.icon(
                       onPressed: () {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                              content: Text('¡Producto comprado!')),
+                          const SnackBar(content: Text('¡Producto comprado!')),
                         );
                       },
                       icon: const Icon(Icons.shopping_bag_outlined),
@@ -107,10 +102,9 @@ class _ProductoDetalleScreenState extends State<ProductoDetalleScreen> {
                         style: TextStyle(fontSize: 16),
                       ),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                        backgroundColor: const Color(0xFF7C3AED),
                         foregroundColor: Colors.white,
-                        padding:
-                            const EdgeInsets.symmetric(vertical: 16),
+                        padding: const EdgeInsets.symmetric(vertical: 16),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -127,9 +121,9 @@ class _ProductoDetalleScreenState extends State<ProductoDetalleScreen> {
       // ── Botón flotante "Agregar al carrito" (esquina inferior derecha) ──
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Agregado al carrito')),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(const SnackBar(content: Text('Agregado al carrito')));
         },
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
@@ -169,8 +163,7 @@ class _ProductoDetalleScreenState extends State<ProductoDetalleScreen> {
             top: 50,
             left: 16,
             child: Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
               decoration: BoxDecoration(
                 color: Colors.red,
                 borderRadius: BorderRadius.circular(12),
@@ -257,11 +250,11 @@ class _ProductoDetalleScreenState extends State<ProductoDetalleScreen> {
               child: Container(
                 padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: const Color(0xFF7C3AED),
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.blue.withOpacity(0.4),
+                      color: const Color(0xFF7C3AED).withOpacity(0.4),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),

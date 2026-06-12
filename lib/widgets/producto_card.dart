@@ -45,15 +45,26 @@ class ProductoCard extends StatelessWidget {
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: Colors.grey[200],
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          const Color(0xFF7C3AED).withOpacity(0.1),
+                          const Color(0xFF7C3AED).withOpacity(0.05),
+                        ],
+                      ),
                       borderRadius: const BorderRadius.vertical(
                         top: Radius.circular(16),
                       ),
                     ),
-                    child: Icon(
-                      _getIcono(producto.imagenUrl),
-                      size: 60,
-                      color: Colors.grey[600],
+                    child: Image.asset(
+                      'images/${producto.imagenUrl}.jpg',
+                      fit: BoxFit.contain,
+                      errorBuilder: (context, error, stackTrace) => Icon(
+                        _getIcono(producto.imagenUrl),
+                        size: 60,
+                        color: Colors.grey[600],
+                      ),
                     ),
                   ),
                 ),

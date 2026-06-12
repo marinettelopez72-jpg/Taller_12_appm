@@ -52,19 +52,19 @@ class _HomeScreenState extends State<HomeScreen> {
           const Icon(Icons.store, color: Color(0xFF7C3AED)),
           const SizedBox(width: 8),
           const Text(
-            'TechHub',
+            'Mi Tienda',
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
           const Spacer(),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
-              color: const Color(0xFF7C3AED),
+              color: const Color(0xFFF3E8FF),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
               '${screenWidth.toInt()}px',
-              style: const TextStyle(color: Colors.white, fontSize: 12),
+              style: TextStyle(color: const Color(0xFF7C3AED), fontSize: 12),
             ),
           ),
         ],
