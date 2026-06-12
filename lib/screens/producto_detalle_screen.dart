@@ -19,38 +19,29 @@ class _ProductoDetalleScreenState extends State<ProductoDetalleScreen> {
       backgroundColor: Colors.grey[100],
       body: Column(
         children: [
-          // ── Parte superior: imagen con Stack ──────────────────────────
           _buildImagenConOverlay(context),
-
-          // ── Parte inferior: información en Column ─────────────────────
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Categoría
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 4,
-                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                     decoration: BoxDecoration(
                       color: const Color(0xFFF3E8FF),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(
                       widget.producto.categoria,
-                      style: TextStyle(
-                        color: const Color(0xFF7C3AED),
+                      style: const TextStyle(
+                        color: Color(0xFF7C3AED),
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
                   const SizedBox(height: 12),
-
-                  // Nombre
                   Text(
                     widget.producto.nombre,
                     style: const TextStyle(
@@ -59,8 +50,6 @@ class _ProductoDetalleScreenState extends State<ProductoDetalleScreen> {
                     ),
                   ),
                   const SizedBox(height: 8),
-
-                  // Precio
                   Text(
                     '\$${widget.producto.precio.toStringAsFixed(2)}',
                     style: const TextStyle(
@@ -70,8 +59,6 @@ class _ProductoDetalleScreenState extends State<ProductoDetalleScreen> {
                     ),
                   ),
                   const SizedBox(height: 16),
-
-                  // Descripción
                   const Text(
                     'Descripción',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -86,8 +73,6 @@ class _ProductoDetalleScreenState extends State<ProductoDetalleScreen> {
                     ),
                   ),
                   const SizedBox(height: 24),
-
-                  // Botón de compra adicional
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton.icon(
@@ -117,13 +102,11 @@ class _ProductoDetalleScreenState extends State<ProductoDetalleScreen> {
           ),
         ],
       ),
-
-      // ── Botón flotante "Agregar al carrito" (esquina inferior derecha) ──
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(const SnackBar(content: Text('Agregado al carrito')));
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Agregado al carrito')),
+          );
         },
         backgroundColor: const Color(0xFF7C3AED),
         foregroundColor: Colors.white,
@@ -133,18 +116,18 @@ class _ProductoDetalleScreenState extends State<ProductoDetalleScreen> {
     );
   }
 
-  /// Imagen grande con elementos superpuestos usando Stack + Positioned
   Widget _buildImagenConOverlay(BuildContext context) {
+    final alturaImagen = (MediaQuery.of(context).size.height * 0.4).clamp(300.0, 400.0);
+
     return SizedBox(
-      height: 350,
+      height: alturaImagen,
       width: double.infinity,
-      // STACK: superpone botones sobre la imagen
       child: Stack(
         children: [
-          // ── Fondo / imagen del producto ──────────────────────────────
+          // Imagen
           Container(
             width: double.infinity,
-            height: 350,
+            height: alturaImagen,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
@@ -169,7 +152,7 @@ class _ProductoDetalleScreenState extends State<ProductoDetalleScreen> {
             ),
           ),
 
-          // ── POSITIONED: badge descuento – esquina superior izquierda ─
+          // Badge descuento
           Positioned(
             top: 50,
             left: 16,
@@ -190,7 +173,7 @@ class _ProductoDetalleScreenState extends State<ProductoDetalleScreen> {
             ),
           ),
 
-          // ── POSITIONED: botón volver – esquina superior izquierda ────
+          // Botón volver
           Positioned(
             top: 44,
             left: 16,
@@ -216,15 +199,13 @@ class _ProductoDetalleScreenState extends State<ProductoDetalleScreen> {
             ),
           ),
 
-          // ── POSITIONED: ícono favorito – esquina superior derecha ────
+          // Favorito
           Positioned(
             top: 44,
             right: 16,
             child: SafeArea(
               child: GestureDetector(
-                onTap: () {
-                  setState(() => _esFavorito = !_esFavorito);
-                },
+                onTap: () => setState(() => _esFavorito = !_esFavorito),
                 child: Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
@@ -248,7 +229,7 @@ class _ProductoDetalleScreenState extends State<ProductoDetalleScreen> {
             ),
           ),
 
-          // ── POSITIONED: botón carrito flotante – esquina inferior derecha
+          // Botón carrito sobre imagen
           Positioned(
             bottom: 16,
             right: 16,
