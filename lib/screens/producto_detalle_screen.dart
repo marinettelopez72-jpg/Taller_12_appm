@@ -125,7 +125,7 @@ class _ProductoDetalleScreenState extends State<ProductoDetalleScreen> {
             context,
           ).showSnackBar(const SnackBar(content: Text('Agregado al carrito')));
         },
-        backgroundColor: Colors.blue,
+        backgroundColor: const Color(0xFF7C3AED),
         foregroundColor: Colors.white,
         icon: const Icon(Icons.add_shopping_cart),
         label: const Text('Agregar al carrito'),
@@ -146,15 +146,26 @@ class _ProductoDetalleScreenState extends State<ProductoDetalleScreen> {
             width: double.infinity,
             height: 350,
             decoration: BoxDecoration(
-              color: Colors.grey[200],
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  const Color(0xFF7C3AED).withOpacity(0.1),
+                  const Color(0xFF7C3AED).withOpacity(0.05),
+                ],
+              ),
               borderRadius: const BorderRadius.vertical(
                 bottom: Radius.circular(32),
               ),
             ),
-            child: Icon(
-              _getIcono(widget.producto.imagenUrl),
-              size: 120,
-              color: Colors.grey[500],
+            child: Image.asset(
+              'images/${widget.producto.imagenUrl}.jpg',
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) => Icon(
+                _getIcono(widget.producto.imagenUrl),
+                size: 120,
+                color: Colors.grey[500],
+              ),
             ),
           ),
 
