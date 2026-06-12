@@ -5,10 +5,7 @@ import '../screens/producto_detalle_screen.dart';
 class ProductoCard extends StatelessWidget {
   final Producto producto;
 
-  const ProductoCard({
-    super.key,
-    required this.producto,
-  });
+  const ProductoCard({super.key, required this.producto});
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +15,7 @@ class ProductoCard extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) =>
-                ProductoDetalleScreen(producto: producto),
+            builder: (context) => ProductoDetalleScreen(producto: producto),
           ),
         );
       },
@@ -104,7 +100,7 @@ class ProductoCard extends StatelessWidget {
                             Container(
                               padding: const EdgeInsets.all(4),
                               decoration: BoxDecoration(
-                                color: Colors.blue,
+                                color: const Color(0xFF7C3AED),
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: const Icon(
@@ -126,8 +122,7 @@ class ProductoCard extends StatelessWidget {
               top: 8,
               right: 8,
               child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
                   color: Colors.red,
                   borderRadius: BorderRadius.circular(12),

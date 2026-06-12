@@ -13,7 +13,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _indiceNavegacion = 0;
   String _categoriaSeleccionada = 'Todos';
-  final List<String> _categorias = ['Todos', 'Electrónica', 'Fotografía', 'Accesorios'];
+  final List<String> _categorias = [
+    'Todos',
+    'Electrónica',
+    'Fotografía',
+    'Accesorios',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: _buildAppBar(context),
       body: Column(
         children: [
-          Expanded(
-            child: _buildContenidoPrincipal(),
-          ),
+          Expanded(child: _buildContenidoPrincipal()),
           BarraNavegacion(
             indiceActual: _indiceNavegacion,
             onTap: (indice) {
@@ -46,28 +49,22 @@ class _HomeScreenState extends State<HomeScreen> {
       elevation: 0,
       title: Row(
         children: [
-          const Icon(Icons.store, color: Colors.blue),
+          const Icon(Icons.store, color: Color(0xFF7C3AED)),
           const SizedBox(width: 8),
           const Text(
-            'Mi Tienda',
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
+            'TechHub',
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
           const Spacer(),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
-              color: Colors.blue[50],
+              color: const Color(0xFF7C3AED),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
               '${screenWidth.toInt()}px',
-              style: TextStyle(
-                color: Colors.blue[700],
-                fontSize: 12,
-              ),
+              style: const TextStyle(color: Colors.white, fontSize: 12),
             ),
           ),
         ],
@@ -90,9 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildSidebar(),
-              Expanded(
-                child: _buildScrollContent(mostrarCategorias: false),
-              ),
+              Expanded(child: _buildScrollContent(mostrarCategorias: false)),
             ],
           );
         }
@@ -138,17 +133,21 @@ class _HomeScreenState extends State<HomeScreen> {
               return ListTile(
                 leading: Icon(
                   _getIconoCategoria(categoria),
-                  color: esActiva ? Colors.blue : Colors.grey[600],
+                  color: esActiva ? const Color(0xFF7C3AED) : Colors.grey[600],
                   size: 22,
                 ),
                 title: Text(
                   categoria,
                   style: TextStyle(
-                    color: esActiva ? Colors.blue : Colors.grey[800],
+                    color: esActiva
+                        ? const Color(0xFF7C3AED)
+                        : Colors.grey[800],
                     fontWeight: esActiva ? FontWeight.bold : FontWeight.normal,
                   ),
                 ),
-                tileColor: esActiva ? Colors.blue[50] : Colors.transparent,
+                tileColor: esActiva
+                    ? const Color(0xFFF3E8FF)
+                    : Colors.transparent,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -227,18 +226,27 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 const Text(
                   '¡Ofertas de Temporada!',
-                  style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(height: 8),
-                const Text('Hasta 50% de descuento',
-                    style: TextStyle(color: Colors.white70, fontSize: 14)),
+                const Text(
+                  'Hasta 50% de descuento',
+                  style: TextStyle(color: Colors.white70, fontSize: 14),
+                ),
                 const SizedBox(height: 12),
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     foregroundColor: Colors.blue,
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
                   ),
                   child: const Text('Ver ofertas'),
                 ),
@@ -248,7 +256,11 @@ class _HomeScreenState extends State<HomeScreen> {
           Positioned(
             right: 20,
             bottom: 20,
-            child: Icon(Icons.local_offer, size: 80, color: Colors.white.withOpacity(0.3)),
+            child: Icon(
+              Icons.local_offer,
+              size: 80,
+              color: Colors.white.withOpacity(0.3),
+            ),
           ),
         ],
       ),
@@ -268,9 +280,17 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Icon(Icons.local_shipping, size: 40, color: Colors.orange[700]),
             const SizedBox(height: 8),
-            Text('Envío Gratis',
-                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orange[900])),
-            Text('En compras +\$50', style: TextStyle(color: Colors.orange[700])),
+            Text(
+              'Envío Gratis',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.orange[900],
+              ),
+            ),
+            Text(
+              'En compras +\$50',
+              style: TextStyle(color: Colors.orange[700]),
+            ),
           ],
         ),
       ),
